@@ -9,15 +9,14 @@ class Resource {
 
     void add(int i) throws InterruptedException {
 
-        linkedBlockingQueue.put(i);
         System.out.println("生产者：" + Thread.currentThread().getName()
                 + "生产：" + i);
+        linkedBlockingQueue.put(i);
     }
 
     void remove() throws InterruptedException {
 
-        int i = linkedBlockingQueue.take();
         System.out.println("消费者：" + Thread.currentThread().getName() +
-                "消费：" + i);
+                "消费：" + linkedBlockingQueue.take());
     }
 }
