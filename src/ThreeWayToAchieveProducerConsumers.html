@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生产者消费者三种模式</title>
+</head>
+<body>
+<ul>
+    <li>Synchronized(锁对象，变量，方法，会自动释放锁)，
+        wait(释放锁，该线程等待)，
+        notify(通知等待线程)/notifyAll(通知所有等待线程)
+    </li>
+    <li>
+        Lock lock = ReentrantLock(Condition condition = new ReentrantLock().newCondition())(需要手动释放锁)
+        condition.await(释放锁，该线程等待);
+        condition.signal(通知等待线程)/condition.signalAll(通知所有等待线程);
+        <ul>
+            <li>lock.lock()(获得锁 ？ 执行 ：等待)</li>
+            <li>lock.tryLock()(获得锁 ？ 返回true :返回false)</li>
+            <li>lock.tryLock(time)(一段时间内获得锁 ？ 返回true :返回false)</li>
+            <li>lock.lockInterruptibly(中断线程)</li>
+        </ul>
+    </li>
+    <li>
+        <ul>
+            <li>LinkBlockingQueue(无界，双锁)/ArrayBlockingQueue(有界，单锁)
+                <ul>
+                    <li>add(添加成功 ？ 返回true : 抛出IllegalStateException)</li>
+                    <li>offer(添加成功返回true，队列满返回false)</li>
+                    <li>put(插入，队列满时阻塞)</li>
+                </ul>
+                <ul>
+                    <li>remove(移除成功 ? 返回true :返回false)</li>
+                    <li>poll(移除，队列为空返回null)</li>
+                    <li>take(移除，队列为空时阻塞)</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>
